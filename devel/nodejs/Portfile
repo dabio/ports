@@ -1,0 +1,53 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 71711 2010-09-21 00:44:00Z ryandesign@macports.org $
+
+PortSystem              1.0
+
+name                    nodejs
+version                 0.2.2
+categories              devel net
+platforms               darwin
+maintainers             gmail.com:ceager openmaintainer
+
+description             Evented I/O for V8 JavaScript
+
+long_description        Node's goal is to provide an easy way to build scalable network programs in JavaScript. \
+                        Node is similar in design to and influenced by systems like Ruby's Event \
+                        Machine or Python's Twisted. Node takes the event model a bit further-it \
+                        presents the event loop as a language construct instead of as a library.
+
+homepage                http://nodejs.org/
+master_sites            ${homepage}dist/
+
+checksums               md5     cccdad01d9c7bc2d62190e3146e43396 \
+                        sha1    4b8a734008ed3e9ba10d72c4f8a60ae56395d992 \
+                        rmd160  59ff652d0c484e7cb1a9da40215e47df82deb661
+
+distname                node-v${version}
+
+configure.args          --without-ssl
+
+variant ssl description {Add secure socket layer support} {
+    depends_lib-append      port:openssl
+    configure.args-delete   --without-ssl
+}
+
+default_variants        +ssl
+
+# V8 only supports ARM and IA-32 processors
+universal_variant       no
+
+test.run                yes
+
+# TODO: Fix the doc installation
+#variant doc description {Build and install manpages} {
+#    use_configure   no
+#    build {}
+#    destroot.target doc install
+#
+#    depends_lib-append      port:asciidoc \
+#                            port:libxslt
+#}
+
+livecheck.type      regex
+livecheck.regex     ">node-v(\\d+(?:\\.\\d+)*)${extract.suffix}<"
