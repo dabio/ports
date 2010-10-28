@@ -2,21 +2,21 @@
 
 This is my collection of additions and updates to [MacPorts](http://www.macports.org/):
 
- 1. nodejs
+1. nodejs
 
 ## Using These Ports
 
- 1. Get the code and generate the `Portindex`:
+1. Get the code and generate the `Portindex`:
 
     $ cd
     $ git clone git://github.com/dabio/ports.git
     $ make -C ports
 
- 2. Add this line to MacPorts' `/opt/local/etc/macports/sources.conf`. Make sure it’s *before* the `[default]` source.
+2. Add this line to MacPorts' `/opt/local/etc/macports/sources.conf`. Make sure it’s *before* the `[default]` source.
 
     file:///Users/your-username/ports
 
- 3. Sync:
+3. Sync:
 
     $ sudo port sync
 
