@@ -3,6 +3,7 @@
 This is my collection of additions and updates to [MacPorts](http://www.macports.org/):
 
 1. nodejs
+2. mnogosearch
 
 ## Using These Ports
 
